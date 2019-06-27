@@ -1,0 +1,36 @@
+
+
+<h1 class= "text-white offset-md-2"><%= @event.title %> Scores:</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-2">
+			<span class= "text-white">
+				<% @event.scores.each do |score|%>
+					<li>
+						<%= link_to score.score_output, score_path(score) %>
+					</li>
+				<%end%>
+			</span>
+		</div>
+		<div class="col-8">
+			<span class="text-white">
+				<% @event.scores.each do |score|%>
+					<li>
+						<%= link_to score.team.name, team_path(score.team) %>
+					</li>
+				<%end%>
+			</span>
+		</div>
+
+	</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="GYm,fitness,business,company,agency,multipurpose,modern,bootstrap4">
+
+  <meta name="author" content="Themefisher.com">
+
+  <title>Ready.Set.Go.</title>
+
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="http://demo.themefisher.com/gymfit/plugins/bootstrap/css/bootstrap.min.css">
+  <!-- Icofont Css -->
+  <link rel="stylesheet" href="http://demo.themefisher.com/gymfit/plugins/icofont/icofont.min.css">
+  <!-- Themify Css -->
+  <link rel="stylesheet" href="http://demo.themefisher.com/gymfit/plugins/themify/css/themify-icons.css">
+  <!-- animate.css -->
+  <link rel="stylesheet" href="http://demo.themefisher.com/gymfit/plugins/animate-css/animate.css">
+  <!-- Magnify Popup -->
+  <link rel="stylesheet" href="http://demo.themefisher.com/gymfit/plugins/magnific-popup/dist/magnific-popup.css">
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="http://demo.themefisher.com/gymfit/plugins/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="http://demo.themefisher.com/gymfit/plugins/slick-carousel/slick/slick-theme.css">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="http://demo.themefisher.com/gymfit/css/style.css">
+
+</head>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body style="background-color: #4d4d4d"> 
+  
+
+  <!-- Navigation -->
+
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+        <%= image_tag("logo_transparent1.png", :alt => "logo", :size => '150x150') %>  
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/competitions">Competitions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/events">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/teams">Teams</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/athletes">Athletes</a>
+          </li>
+          <% if session[:user_id] %>
+            <li class="nav-item">
+              <a class= "nav-link js-scroll-trigger text-info" href="<%= user_path(session[:user_id]) %>" > [ WELCOME <%= User.find(session[:user_id]).name.upcase %> | DASHBOARD ]</a>
+            </li>
+            <li class="nav-item">
+              <a class= "nav-link js-scroll-trigger text-info">
+                <%= button_to("LOGOFF", logoff_path , method: :delete) %>
+              </a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login">Login</a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <%= yield %>
+
+  <!-- Footer -->
+  <!-- cant tell if below html is necessary at all. when deleted doesnt seem to change the page at all-->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+    </div>
+  </footer>
+
+  </body>
+</html>

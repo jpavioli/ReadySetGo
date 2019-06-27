@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class= "text-white"><%= @event.title %></h1>
+      <span class= "text-white"
+        Event Time: <%= @event.time == nil ? "" : @event.time.strftime("%m/%d/%y - %l:%M %P") %><br>
+        Event Discription: <br>
+        <%= @event.description %><br>
+        Score Type:
+        <%= @event.score_type %>
+      </span>
+    </div>
+    <div class="col">
+      <h3 class= "text-white">Teams Participating:</h3>
+      <ul>
+        <% @event.teams.uniq.each do |team| %>
+          <li>
+            <%= link_to team.full_name, team_path(team) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% if @user && (@user.id == @event.competition.competition_manager_id || @user.id == @event.event_manager_id)%>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4><%= link_to "Edit Event", "/events/#{@event.id}/edit" %></h4>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Add Event", "/events/new" %></h4>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Event Score Summary", "/events/#{@event.id}/scores" %></h4>
+      </div>
+    </div>
+  </div>
+<% end %>

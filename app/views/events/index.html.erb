@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+		<div class="col-sm-8">
+			<h1 class="text-white">All Events</h1>
+			<span class="text-white">
+				<% @events.each do |event|%><br>
+        	<font size="+1"><%= link_to event.title, event_path(event) %> | <%= link_to event.competition.name, competition_path(event.competition) %></font></br>
+        	<%= event.description %><br><br>
+  			<%end%>
+  		</span>
+		</div>
+		<div class="col-sm-4">
+	  	<h1 class="text-uppercase text-white mb-5">Such <span class="text-primary">Wow</span><br>Many <span class="text-primary">events</span> very <span class="text-primary">clean</span><br></h1>
+		</div>
+  </div>
+</div>
+

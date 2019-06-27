@@ -1,0 +1,7 @@
+<h1><%= @competition.name %> Scores:</h1>
+  <% @competition.events.each do |event| %>
+    <h2><%= event.title %></h2>
+    <% event.scores.each do |score| %>
+      <li><%= link_to score.score_output, score_path(score) %> | <%= link_to score.team.name, team_path(score.team) %> </li>
+    <% end %>
+  <% end %>

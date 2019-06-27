@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1 class="text-uppercase text-white mb-5">The <span class="text-primary">Place</span><br>to <span class="text-primary">organize</span> your <span class="text-primary">comps</span><br></h1>
+    </div>
+    <div class="col-sm-8">
+      <h1 class="text-white">All Competitions</h1>
+      <% @competitions.each do |competition| %>
+        <h3><%= link_to competition.name, competition_path(competition) %></h3>
+        <span class= "text-white">
+          Location: <%= competition.location %><br>
+          Date:     <%= competition.datetime.strftime("%A %B %-d, %Y") %><br>
+          <%= competition.description %><br>
+          <% if competition.events.any?{|event| event.scores != [] } %>
+          <%= link_to "Competition Stats", "/competitions/#{competition.id}/stats" %>
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>

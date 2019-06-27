@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+		<div class="col-sm-7">
+			<h1 class="text-white">Those Teams Though</h1>
+			<span class="text-white">
+				<% @teams.each do |team|%>
+    			<li>
+        		<%= link_to team.full_name, team_path(team) %> | <%= link_to team.competition.name, competition_path(team.competition) %>
+    			</li>
+  			<%end%>
+  		</span>
+		</div>
+		<div class="col-sm-4">
+	  	<h1 class="text-uppercase text-white mb-5">You <span class="text-primary">want</span><br>teams <span class="text-primary">we</span><br> got <span class="text-primary">teams</span><br></h1>
+		</div>
+  </div>
+</div>
+
+
+

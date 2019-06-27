@@ -1,0 +1,32 @@
+<% if flash[:error] %>
+  <div class="container">
+    <div class="row">
+      <div class="col-center">
+        <% flash[:error].each do |e| %>
+          <h1 class="text-danger"><%= e %></h1>
+        <%end%>
+      </div>
+    </div>
+  </div>
+<%end%>
+<%= form_for @competition do |f| %>
+  <div class= "container">
+    <div class= "row">
+      <div class="col">
+        <h4><span class= "text-white"> Name: </span></h4>
+        <%= f.text_field :name %><br>
+        <h4><span class= "text-white"> Description: </span></h4>
+        <%= f.text_area :description %><br>
+        <h4><span class= "text-white"> Location: </span></h4>
+        <%= f.text_area :location %><br>
+        <h4><span class= "text-white"> Date: </span></h4>
+        <%= f.date_select :datetime %><br>
+        <h4><span class= "text-white"> Manager: </span></h4>
+        <%= f.collection_select :competition_manager_id, @competition_managers, :id, :name %><br>
+        <h4><span class= "text-white"> Status: </span></h4>
+        <%= f.text_field :status %><br><br>
+        <%= f.submit %>
+      </div>
+    </div>
+  </div>
+<% end %>

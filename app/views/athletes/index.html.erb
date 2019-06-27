@@ -1,0 +1,17 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<h1 class="text-uppercase text-white mb-5">Look <span class="text-primary">at</span><br>all <span class="text-primary">them</span><br> sports<span class="text-primary"> people</span><br></h1>
+			</div>
+			<div class="col-sm-8">
+				<h1 class= "text-white">All Them Athletes</h1>
+    			<% @athletes.each do |athlete|%>
+      			<li>
+          		<%= link_to athlete.name, athlete_path(athlete) %> | <%= link_to athlete.team.name, team_path(athlete.team) %> | <%= link_to athlete.team.competition.name, competition_path(athlete.team.competition) %>
+						</li>
+    			<%end%>
+			</div>
+		</div>
+	</div>
+</section>

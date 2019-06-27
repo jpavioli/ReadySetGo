@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class= "text-white"><%= @athlete.name %></h1>
+      <span class= "text-white">
+        Hometown: <%= @athlete.hometown %>, <%= @athlete.state %> <br>
+        Stats:    <%= @athlete.gender %> | <%= @athlete.height_neat %> | <%= @athlete.weight %>lbs <br>
+        Bio: <br>
+        <%= @athlete.bio %>
+      </span>
+    </div>
+    <div class="col">
+      <h3 class="text-white">Full Roster:</h3>
+      <ul>
+        <% @athlete.team.athletes.each do |athlete| %>
+          <li>
+            <%= link_to athlete.name, athlete_path(athlete) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 class= "text-white">Events Competing In:</h3>
+      <ul>
+        <% @athlete.team.events.uniq.each do |event| %>
+          <li>
+            <%= link_to event.title, event_path(event) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<% if @user && (@user.id == @athlete.team.competition.competition_manager_id || @user.id == @athlete.team.team_manager_id) %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4><%= link_to "Edit Athlete", "/athletes/#{@athlete.id}/edit" %></h4>
+      </div>
+    </div>
+  </div>
+<%end%>

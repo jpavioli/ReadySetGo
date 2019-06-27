@@ -1,0 +1,47 @@
+<% if flash[:error] %>
+  <div class="container">
+    <div class="row">
+      <div class="col-center">
+        <% flash[:error].each do |e| %>
+          <h1 class="text-danger"><%= e %></h1>
+        <%end%>
+      </div>
+    </div>
+  </div>
+<%end%>
+<%= form_for @athlete do |f| %>
+  <div class= "container">
+    <div class= "row">
+      <div class="col">
+        <h4><span class= "text-white"> Name: </span></h4>
+        <%= f.text_field :first_name %>
+        <%= f.text_field :last_name %><br>
+      </div>
+    </div>
+    <div class= "row">
+      <div class= "col">
+        <h4><span class= "text-white"> Hometown: </span></h4>
+        <%= f.text_field :hometown %><br>
+        <h4><span class= "text-white"> State: </span></h4>
+        <%= f.select(:state, options_for_select(@states.map{|s| [s,s]})) %><br>
+        <h4><span class= "text-white"> Bio: </span></h4>
+        <%= f.text_area :bio %><br>
+        <h4><span class= "text-white"> Jersey Number: </span></h4>
+        <%= f.text_field :jersey_number %><br>
+        <h4><span class= "text-white"> Gender: </span></h4>
+        <%= f.select(:gender, options_for_select(['Male','Female'].map{|g| [g,g]})) %><br>
+      </div>
+      <div class= "col">
+        <h4><span class= "text-white"> Age: </span></h4>
+        <%= f.text_field :age %><br>
+        <h4><span class= "text-white"> Weight: </span></h4>
+        <%= f.text_field :weight %><br>
+        <h4><span class= "text-white"> Height: </span></h4>
+        <%= f.text_field :height %><br>
+        <h4><span class= "text-white"> Team: </span></h4>
+        <%= f.collection_select :team_id, Team.all, :id, :name %><br><br><br>
+        <%= f.submit %>
+      </div>
+    </div>
+  </div>
+<%end%>

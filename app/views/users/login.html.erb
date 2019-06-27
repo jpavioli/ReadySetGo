@@ -1,0 +1,30 @@
+<% if flash[:error] %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <% flash[:error].each do |e| %>
+        <h1 class="text-danger"><%= e %></h1>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<%end%>
+<div class= "container">
+    <div class="row">
+      <div class="col">
+
+<%= form_tag "/login", controller:"users", method:"post", action:"users#session_logofflogin" do %>
+  <h4><span class= "text-white"> Username: </span></h4>
+  <%= text_field_tag :username %><br/>
+  <h4><span class= "text-white"> Password: </span></h4>
+  <%= password_field_tag :password %><br><br>
+  <%= submit_tag "Log in" %>
+<% end %>
+<br>
+
+<font size= "+1"><%= link_to "New User", new_user_path %><font>
+<br>
+      </div>
+    </div>
+</div>

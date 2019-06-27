@@ -1,0 +1,11 @@
+<%= render 'form' %>
+<br><br>
+<div class= "container">
+    <div class= "row">
+        <div class= "col">
+    <%= form_tag("/competitions/#{@competition.id}", method: "delete") do %>
+    <%= submit_tag("Delete Competition")%>
+    </div>
+    </div>
+</div>
+<%end%>

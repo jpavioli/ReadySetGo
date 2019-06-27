@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h1><%= link_to @score.event.title, "/events/#{@score.event.id}"%></h1>
+  </div>
+</div>
+<br>
+  <br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <span class="text-white">
+        Team: <%= @score.team.name%><br>
+      </span>
+    </div>
+    <div class="col">
+      <span class="text-white">
+        Event Type: <%= @score.event.score_type %><br>
+      </span>   
+    </div>
+    <div class="col">
+      <span class="text-white">
+        Score: <%= @score.score%><br>
+      </span>
+    </div>
+  </div>
+</div>
+<br>
+  <br>
+<% if @user && (@user.id == @score.event.competition.competition_manager_id || @user.id == @score.event.event_manager_id)%>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h4><%= link_to "Edit Score", "/scores/#{@score.id}/edit" %></h4>
+      </div>
+      <div class="col-sm">
+        <% # intentionally left blank for formatting %>
+      </div>
+      <div class="col-sm">
+        <% # intentionally left blank for formatting %>
+      </div>
+    </div>
+  </div>
+<% end %>

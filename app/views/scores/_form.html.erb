@@ -1,0 +1,27 @@
+<% if flash[:error] %>
+  <div class="container">
+    <div class="row">
+      <div class="col-center">
+        <% flash[:error].each do |e| %>
+          <h1 class="text-danger"><%= e %></h1>
+        <%end%>
+      </div>
+    </div>
+  </div>
+<%end%>
+
+<%= form_for @score do |f| %>
+  <div class= "container">
+  <div class= "row">
+    <div class="col">
+    <h4><span class= "text-white"> Score: </span></h4>
+<%= f.number_field :score %><br/>
+<h4><span class= "text-white"> Event: </span></h4>
+<%= f.collection_select :event_id, Event.all, :id, :title, {:prompt => "Please select an Event"} %><br>
+<h4><span class= "text-white"> Team: </span></h4>
+<%= f.collection_select :team_id, Team.all, :id, :name, {:prompt => "Please select a Team" } %><br><br>
+<%= f.submit %>
+</div>
+</div>
+</div>
+<% end %>

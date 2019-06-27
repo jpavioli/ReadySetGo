@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h1 class="text-white">Welcome <%= @user.name %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <% if @competitions != [] %>
+        <h2 class="text-primary">Competitions:</h2>
+        <% @competitions.each do|competition| %>
+          <h3><%= link_to competition.name, competition_path(competition) %></h3>
+          <span class="text-white">
+          <p><%= competition.description %></p>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <% if @events != [] %>
+        <h2 class="text-primary">Events:</h2>
+          <% @events.each do|event| %>
+            <li><%= link_to event.title, event_path(event) %></li>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <% if @teams != [] %>
+        <h2 class="text-primary">Teams:</h2>
+          <% @teams.each do|team| %>
+            <li><%= link_to team.name, team_path(team) %></li>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+<% if @user.user_type == "Competition Manager" %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4><%= link_to "Add Competition", "/competitions/new" %></h4>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Add Event", "/events/new" %></h4>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Add Team", "/teams/new" %></h4>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% if @user.user_type == "Event Manager" %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <% #intentionally left blank for formatting %>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Add Event", "/events/new" %></h4>
+      </div>
+      <div class="col">
+        <% #intentionally left blank for formatting %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% if @user.user_type == "Team Manager" %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <% #intentionally left blank for formatting %>
+      </div>
+      <div class="col">
+        <% #intentionally left blank for formatting %>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Add Team", "/teams/new" %></h4>
+      </div>
+    </div>
+  </div>
+<% end %>

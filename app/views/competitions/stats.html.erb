@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class= "text-white"><%= @competition.name %> Statistics</h1>
+    </div>
+    <div class="col">
+      <h4 class= "text-white">Total Number of Events: <%= @competition.events.count %></h4> 
+      <h4 class= "text-white">Total Number of Teams:  <%= @competition.events.count %></h4> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2 class="text-primary">Event Summary: </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <% @competition.events.each do |event| %>
+        <h3 class= "text-white"><%= event.title %></h3>
+        <h4 class= "text-white">Event Score Type: <%= event.score_type %></h4>
+        <h4 class= "text-white">Average Score: <%= event.average_score %></h4>
+        <ol>
+          <% event.rankings.each do |score| %>
+            <li>
+              <%= link_to "#{score.team.name} | #{score.score_output}", team_path(score.team) %>
+            </li>
+          <%end%>
+        </ol>
+      <%end%>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<% if flash[:error] %>
+  <div class="container">
+    <div class="row">
+      <div class="col-center">
+        <% flash[:error].each do |e| %>
+          <h1 class="text-danger"><%= e %></h1>
+        <%end%>
+      </div>
+    </div>
+  </div>
+<%end%>
+<%= form_for @team do |f| %>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4><span class= "text-white"> Name: </span></h4>
+                <%= f.text_field :name %><br/>
+                <h4><span class= "text-white"> Location: </span></h4>
+                <%= f.text_field :location %><br>
+                <h4><span class= "text-white"> Sponsor: </span></h4>
+                <%= f.text_field :sponsor %><br>
+            </div>
+            <div class="col">
+                <h4><span class= "text-white"> Team Type: </span></h4>
+                <%= f.text_field :team_type %><br>
+                <h4><span class= "text-white"> Mascot: </span></h4>
+                <%= f.text_field :mascot %><br>
+                <h4><span class= "text-white"> Competition: </span></h4>
+                <%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"}%><br>
+                <h4><span class= "text-white"> Manager: </span></h4>
+                <%= f.collection_select :team_manager_id, @team_managers, :id, :name, {:prompt => "Please select a Team Manger"}%><br><br>
+                <%= f.submit %>
+            </div>
+        </div>
+    </div>
+<%end%>
